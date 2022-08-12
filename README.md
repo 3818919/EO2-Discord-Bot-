@@ -1,33 +1,39 @@
-**Discord Server**
+## Discord Server ##
 ID: ID of the discord server, needed for discord's API
 
-**Advertising**
+## Advertising ##
+```
 Enabled: Are times messages enabled
 Advertising Channel: The channel you want the discord bot to post messages.
+```
+> ServerID, advertising, channel = config.Discord()
 
-ServerID, advertising, channel = config.Discord()
 
-
-**Game Server**
+## Game Server ##
+```
 IP: EO2 Server IP
 Port: EO2 Server Port
 Retry : How many times to retry a ping when checking status
 Timeout: How long before server ping timeout
+```
+> ip, port, retry, timeout = config.Server()
 
-ip, port, retry, timeout = config.Server()
 
-
-**Data Connection**
+## Data Connection ##
+```
 Domain: Main website domain found in config.ini
 Ranks: Domain to game toplists found in config.ini
 Discord: Link to discord invite
 Download: Link to download client
 Online: URL of EOSource SLN found in config.ini
 Backup: URL to EOServ as a backup, found in config.ini
+```
+> domain, ranks, discord, download, online, backup = config.API()
 
-**Bot Alerts**
+## Bot Alerts ##
+```
 Alert_Check: If bot alerts are enabled
 Alert_Channel: Channel the bot posts admin alerts to
 Alert_Admin: The admin who the bot will ping if the game goes offline
-
-alert_check, alert_channel, alert_admin = config.Alerts()
+```
+> alert_check, alert_channel, alert_admin = config.Alerts()
