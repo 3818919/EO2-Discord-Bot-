@@ -1,15 +1,17 @@
-## Discord Server ##
+# Setup #
+Bot settings can be changed via the config.ini file, the config folder assigns those values to functions for later use. Follow the below general guide for these connections when adding additional functionality.
+
 ```
-ID: ID of the discord server, needed for discord's API
+from config import config, server
 ```
 
 ## Advertising ##
 ```
-Enabled: Are times messages enabled
-Advertising Channel: The channel you want the discord bot to post messages.
+ServerID: ID of the discord server, needed for discord's API
+Advertising: Are times messages enabled (bool)
+Channel: The channel you want the discord bot to post messages.
 ```
 > ServerID, advertising, channel = config.Discord()
-
 
 ## Game Server ##
 ```
@@ -19,7 +21,6 @@ Retry : How many times to retry a ping when checking status
 Timeout: How long before server ping timeout
 ```
 > ip, port, retry, timeout = config.Server()
-
 
 ## Data Connection ##
 ```
