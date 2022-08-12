@@ -1,7 +1,7 @@
 # Setup #
 All details specific to the server can be changed in config.ini, it was setup as such so that in the event of the main network's IP changing or projects domain's change. <br>
 
-Main bot code found in main.py.<br>
+Main bot code found in **main.py**, commands are inside of the **cogs** directory.<br>
 
 This bot was built inside of the replit.com platform, the bot's "Token" is stored inside of private database within replit. Additionally some folders displayed inside of github pertain directly to that platform.<br>
 
