@@ -1,7 +1,9 @@
 # Setup #
 All details specific to the server can be changed in config.ini, it was setup as such so that in the event of the main network's IP changing or projects domain's change. <br><br>
 
-This bot was built inside of the replit.com platform, the bot's "Token" is stored inside of private database within replit. Additionally some folders displayed inside of github pertain directly to that platform.
+This bot was built inside of the replit.com platform, the bot's "Token" is stored inside of private database within replit. Additionally some folders displayed inside of github pertain directly to that platform.<br><br>
+
+Bot is uring the [Disnake](https://docs.disnake.dev/en/stable/) library to connect to the Discord API.
 
 # Config.ini #
 Config.ini has 5 sections: DiscordServer for discord server configs, Advert for automated message configs, ServerSettings for game server settings, Website for game related urls, StatusAlerts for admin alerts for when the game goes offline.
