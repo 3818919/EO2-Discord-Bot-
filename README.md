@@ -1,5 +1,7 @@
 ## Discord Server ##
+```
 ID: ID of the discord server, needed for discord's API
+```
 
 ## Advertising ##
 ```
