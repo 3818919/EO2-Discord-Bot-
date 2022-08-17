@@ -16,6 +16,11 @@ def Discord():
   channel = int(config['Advert']['General'])
   return ServerID, channel
 
+def TOKEN():
+  config = read_config()
+  TOKEN = str(config['token']['token'])
+  return TOKEN
+
 #Define if advertising enabled
 def Advertising():
   config = read_config()

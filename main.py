@@ -73,5 +73,7 @@ async def on_message(message):
         return
       
     await bot.process_commands(message)
-  
+
+#Replace "Disabled" with your bot's token inside of config.ini then uncomment the line below.
+#TOKEN = config.TOKEN()
 bot.run(TOKEN)
