@@ -1,5 +1,6 @@
 import os
-from config import config, server
+import config
+from api import server
 import asyncio
 import disnake
 from disnake.ext import tasks, commands
@@ -9,6 +10,11 @@ class bcolours:
     GREEN = '\033[92m'
     YELLOW = '\033[93m'
     RED = '\033[91m'
+
+class advert:
+  enabled = config.Advertising()
+  ServerID, channel = config.Discord()
+  
 TOKEN = os.environ['TOKEN']
 
 bot = commands.Bot(command_prefix=disnake.ext.commands.when_mentioned)
@@ -32,11 +38,10 @@ async def status_swap():
 @tasks.loop(minutes=180)
 async def send():
   await asyncio.sleep(200)
-  ServerID, advertising, channel = config.Discord()
-  channel = bot.get_channel(channel)
+  channel = bot.get_channel(advert.channel)
   try:
-    if advertising == True:
-      message = server.advert()
+    if advert.enabled == True:
+      message = info.advert()
       await channel.send(message, delete_after = 1800)
       return
     else:
