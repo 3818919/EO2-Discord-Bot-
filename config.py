@@ -16,10 +16,15 @@ def Discord():
   channel = int(config['Advert']['General'])
   return ServerID, channel
 
+#Define TOKEN if Enabled
 def TOKEN():
   config = read_config()
-  TOKEN = str(config['token']['token'])
-  return TOKEN
+  enabled = bool(config['token']['enabled'])
+  if enabled == True:
+    TOKEN = bool(config['token']['token'])
+    return TOKEN
+  else:
+    print('TOKEN is not enabled')
 
 #Define if advertising enabled
 def Advertising():

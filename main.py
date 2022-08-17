@@ -41,7 +41,7 @@ async def send():
   channel = bot.get_channel(advert.channel)
   try:
     if advert.enabled == True:
-      message = info.advert()
+      message = config.advert()
       await channel.send(message, delete_after = 1800)
       return
     else:
@@ -74,6 +74,6 @@ async def on_message(message):
       
     await bot.process_commands(message)
 
-#Replace "Disabled" with your bot's token inside of config.ini then uncomment the line below.
+#Uncomment the below line to enable config.ini token functionality
 #TOKEN = config.TOKEN()
 bot.run(TOKEN)

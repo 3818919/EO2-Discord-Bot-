@@ -4,6 +4,3 @@
 poetry.lock
 pyproject.tolm
 replit.nix
-.breakpoints
-.gitignore
-.replit
