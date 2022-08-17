@@ -3,12 +3,14 @@ import pandas as pd
 from bs4 import BeautifulSoup
 import urllib.request
 from urllib.request import Request, urlopen
+from api.advertising import settings
 
 class config:
   domain, ranks = config.API()
   ip, port, retry, timeout = config.Server()
   download = config.download()
 
+#Webscrapes the "leaderbords" of the eo website to
 def topPlayers():
   req = Request(config.ranks, headers={'User-Agent': 'Mozilla/5.0'})
   webpage = urlopen(req).read()
@@ -53,3 +55,7 @@ def players():
     plist = '\n '.join(Names) #List of Players
     pnum = len(Names) #Count of players
     return plist, pnum
+
+def Adverts():
+  advert = settings.Ads()
+  return advert

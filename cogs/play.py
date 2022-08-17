@@ -20,7 +20,7 @@ class play(commands.Cog):
   bot = config.dbot()  
   @bot.slash_command(description="A quick way to download the game.")
   async def play(inter):
-    download = disnake.Embed(title = 'Play EO2!', url=info.client, description = f'Currently {info.pnum} players online!', colour = disnake.Colour.green())
+    download = disnake.Embed(title = 'Play The New Custom EO2 Client!', url=info.client, description = f'Currently {info.pnum} players online!', colour = disnake.Colour.green())
     download.set_thumbnail(url="https://endlessonline2.com/npcs/4781.png")
     await inter.response.send_message(embed=download)
     time.sleep(2)

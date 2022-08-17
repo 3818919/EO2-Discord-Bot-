@@ -3,11 +3,25 @@ from disnake.ext import commands
 import disnake
 import random
 
-#Define Cinfig
+#Define COnfig
 def read_config():
     config = configparser.ConfigParser()
     config.read('config.ini')
     return config
+
+################################
+#### DEBUG Related Settings ####
+################################
+
+#Define Discord Variables
+def DEBUG():
+  config = read_config()
+  testchannel = int(config['DEBUG']['testchannel'])
+  return testchannel
+
+##################################
+#### Discord Related Settings ####
+##################################
 
 #Define Discord Variables
 def Discord():
@@ -16,7 +30,7 @@ def Discord():
   channel = int(config['Advert']['General'])
   return ServerID, channel
 
-#Define TOKEN if Enabled
+#Define TOKEN from config.ini if Enabled
 def TOKEN():
   config = read_config()
   enabled = bool(config['token']['enabled'])
@@ -25,48 +39,6 @@ def TOKEN():
     return TOKEN
   else:
     print('TOKEN is not enabled')
-
-#Define if advertising enabled
-def Advertising():
-  config = read_config()
-  enabled = bool(config['Advert']['Advertising'])
-  return enabled
-
-#Define Server Variables
-def Server():
-  config = read_config()
-  ip = config['ServerSettings']['ip']
-  port = int(config['ServerSettings']['port'])
-  retry = int(config['ServerSettings']['retry'])
-  timeout = int(config['ServerSettings']['timeout'])
-  return ip, port, retry, timeout
-
-#Define Website Connection Variables
-def API():
-  config = read_config()
-  domain = config['Website']['domain']
-  ranks = config['Website']['toplist']
-  return domain, ranks
-
-#Define Download Link
-def download():
-  config = read_config()
-  download = config['ClientDownload']['DownloadURL']
-  return download
-
-#Define Donate Link
-def donate():
-  config = read_config()
-  donate = config['Donate']['DonateURL']
-  return donate
-
-#Define Alert Methods
-def Alerts():
-  config = read_config()
-  alert_check = config['StatusAlerts']['offline_alert']
-  alert_channel = int(config['StatusAlerts']['admin_alert'])
-  alert_admin = int(config['StatusAlerts']['ele_id'])
-  return alert_check, alert_channel, alert_admin  
 
 #Defind Bot Attributes
 def bot():
@@ -84,13 +56,52 @@ def dbot():
   bot = commands.Bot(command_prefix='/', intents=intents, case_insensitive=True,)
   return bot
 
-#Assign adverts
-def advert():
-  recovery = '<@1007106214875893770>'
-  support = '<@1007106214875893770>'
-  advert = ['You help us pay for the server, website, advertising, ddos protection & more. Type $donate to support the server.', 'To check who is online, use the /online command.', f'For game support, head to the {support} channel and click the ticket reaction to open a support ticket.', f'Need help recovering your account? Head to the {recovery.mention} channel and click on the ticket reation. One of our helpful admins will then help you recover your old account.']
-  message = random.choice(advert)
-  return message
+###################
+## Auto Messages ##
+###################
+
+#Welcome Message for new members
+def Welcome(member):
+  member = member.mention
+  messages = [f'{member} has entered the chat! Hope you brought 🍕', f'{member} has joined the party! 🥳', f'{member} has arrived right in the nick of time!', f'Have no fear {member} is here!']
+  welcome = random.choice(messages)
+  return welcome
+
+#Define if advertising enabled
+def Advertising():
+  config = read_config()
+  active = config['Advert']['active']
+  if active == "True" or active == "true":
+    active = True
+    return active
+  else:
+    active = False
+    return active
+
+###########################
+#### EO2 Game Settings ####
+###########################
+
+#Define Server Variables
+def Server():
+  config = read_config()
+  ip = config['ServerSettings']['ip']
+  port = int(config['ServerSettings']['port'])
+  retry = int(config['ServerSettings']['retry'])
+  timeout = int(config['ServerSettings']['timeout'])
+  return ip, port, retry, timeout
+
+################################
+## Server Down Discord Alerts ##
+################################
+
+#Define Alert Methods
+def Alerts():
+  config = read_config()
+  alert_check = config['StatusAlerts']['offline_alert']
+  alert_channel = int(config['StatusAlerts']['admin_alert'])
+  alert_admin = int(config['StatusAlerts']['ele_id'])
+  return alert_check, alert_channel, alert_admin 
 
 #Define server online info
 def online(pnum):
@@ -104,3 +115,27 @@ def offline():
   title = 'Server Offline'
   desc = 'I have just checked and EO2 is currently offline!'
   return title, desc
+
+############################
+## Web Scraping Functions ##
+############################
+
+#Define Website Connection Variables
+def API():
+  config = read_config()
+  domain = config['Website']['domain']
+  ranks = config['Website']['toplist']
+  return domain, ranks
+
+#Define Download Link
+def download():
+  config = read_config()
+  download = config['ClientDownload']['DownloadURL']
+  return download
+
+#Define Donate Link
+def donate():
+  config = read_config()
+  donate = str(config['Donate']['DonateURL'])
+  thanks = str(config['Donate']['Thanks'])
+  return donate, thanks
