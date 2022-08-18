@@ -3,12 +3,13 @@ All details specific to the server can be changed in config.ini, it was setup as
 
 Main bot code found in **main.py**, commands are inside of the **cogs** directory. Functions such as scraping websites or server pings are in the **api** directory.<br>
 
-This bot was built inside of the replit.com platform, the bot's "Token" is stored inside of private database within replit. Additionally some folders displayed inside of github pertain directly to that platform. Functionality for bot TOKEN's to be configured in config.ini has been added, uncomment the 2nd last line of main.py to enable.<br>
-
 Bot is using the [Disnake](https://docs.disnake.dev/en/stable/) library to connect to the Discord API.
 
 # Config.ini #
-Config.ini has 5 sections: DiscordServer for discord server configs, Advert for automated message configs, ServerSettings for game server settings, Website for game related urls, StatusAlerts for admin alerts for when the game goes offline.
+Config.ini contains the bot settings, tweaking variables is best done within the config.ini file.
+
+# Ads.ini #
+Ads.ini contains the bot's auto messages, if you want to add more messages remember to also adjust the settings.ini in the Advertising folder. Ads are currently disabled in the config.ini file.
 
 ## Connecting config.ini ##
 Connection to the config.ini variables are done inside config > config.py, there are also some additional functions to clear up space in the cogs.
@@ -25,19 +26,19 @@ This command uses webscraping of the endlessonline2.com website to obtain a list
 ## Online ##
 This command used webscraping of the EOSource & EOServ SLN to obtain a list of current online players. It then formats this information in a way discord can understand.
 ```
-/online
+/online - Displays a list of online players
 ```
 
 ## Play ##
 This command used webscraping of the EO2 website to obtain the latest download link. It then formats this information in a way discord can understand.
 ```
-/play
+/play - Scrapes the EO2 website for the latest download link & provides it in an embed
 ```
 
 ## Donate ##
 This command used webscraping of the EO2 website to obtain the latest donate link. It then formats this information in a way discord can understand.
 ```
-/donate
+/donate - Displays an embed linked to the EO donate page
 ```
 
 
@@ -55,4 +56,14 @@ The "api" directory handles functions for web scraping, socket ping & api connec
 from api import api, server
 ```
 
-
+# Dependencies #
+```
+python = ">=3.8.0,<3.9"
+numpy = "^1.22.2"
+replit = "^3.2.4"
+Flask = "^2.2.0"
+bs4 = "^0.0.1"
+pandas = "^1.4.3"
+disnake = "^2.5.2"
+lxml = "^4.9.1"
+```
